@@ -19,5 +19,3 @@ If you are on a "modern" version of OSX (64bit) you need to install a 64bit vers
 Get a pre-compiled version here: <http://blog.iharder.net/2009/08/18/rxtx-java-6-and-librxtxserial-jnilib-on-intel-mac-os-x/>. You still need the original RXTXcomm.jar of course. Stick them both in the folder */Library/Java/Extensions*.
 
 
-
-
