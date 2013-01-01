@@ -13,6 +13,8 @@ import java.io.OutputStream;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.Date;
+import java.text.SimpleDateFormat;
+
 
 /**
  * Command line program (and class) which reads the output from a serial port and outputs to stdout.
@@ -75,6 +77,8 @@ public class LogSerial
 	private PrintStream out;
 	private boolean timestamps;
         private byte[] buffer = new byte[1024];
+	private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
         
         public SerialReader (InputStream in, PrintStream out, boolean timestamps) {
             this.in = in;
@@ -93,7 +97,7 @@ public class LogSerial
                     buffer[len++] = (byte) data;
                 }
 		if(timestamps)
-		    out.print((new Date()).toString() + ",");
+		    out.print(dateFormat.format(new Date()) + ",");
                 out.print(new String(buffer,0,len)+"\r\n");
             }
             catch ( IOException e ) {
