@@ -7,9 +7,9 @@ This is a simple program to read from a serial device and log to a log file (or 
 - Compile the source (javac SerialLog.java)
 
 ## Usage
-- General: - **java LogSerial serial_device baudrate [-t for added timestamps] [logfile]**
-- Basic example: **java LogSerial /dev/cu.usbserial-A600aSkM 115200**
-- To file, with time stamps **java LogSerial /dev/cu.usbserial-A600aSkM 115200 -t ./logfile.txt**
+- General: - **java serial.LogSerial serial_device baudrate [-t for added timestamps] [logfile]**
+- Basic example: **java serial.LogSerial /dev/cu.usbserial-A600aSkM 115200**
+- To file, with time stamps **java serial.LogSerial /dev/cu.usbserial-A600aSkM 115200 -t ./logfile.txt**
 
 
 ## Notes and trouble-shooting
