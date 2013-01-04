@@ -4,7 +4,7 @@ This is a simple program to read from a serial device and log to a log file (or 
 ## Installing
 - Install [RXTX](http://rxtx.qbang.org/wiki/index.php/Main_Page) 
 - Clone this repository
-- Compile the source (javac SerialLog.java)
+- Compile the source (javac -Xlint:unchecked -classpath .:./lib/gson-2.2.2.jar serial/*java)
 
 ## Usage
 - General: - **java serial.LogSerial serial_device baudrate [-t for added timestamps] [logfile]**

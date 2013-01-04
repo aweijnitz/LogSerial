@@ -11,14 +11,6 @@ import java.io.PrintStream;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
-/*
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.FileOutputStream;
-import java.text.SimpleDateFormat;
-
-*/
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -52,7 +44,7 @@ public class ToJSONSeries {
     public ToJSONSeries() {
 	
     }
-
+    
     public void convert(String fileName, PrintStream out) {
 	byte history = 20;
 	DataSeries humidity = new DataSeries("Humidity", "#4682b4");
@@ -70,6 +62,8 @@ public class ToJSONSeries {
 	    HashMap pair;
 	    float[] rH = new float[history];
 	    float[] t = new float[history];
+	    // Loop through all the lines and do sub-sampling by summing up 
+	    // at every 20 lines (history) and output the resulting average value
 	    while ((nextLine = in.readLine()) != null)   {
 		// Remove debug statements and filter out empty lines
 		if(nextLine.startsWith("DEBUG") || nextLine.trim().isEmpty())
@@ -147,18 +141,6 @@ public class ToJSONSeries {
 	    data.add(p);
 	}
     }
-
-    /*
-    protected class DataPair {
-	private HashMap pair;
-
-	public DataPair(String date, String y) {
-	    pair = new HashMap();
-	    pair.put("x", date);
-	    pair.put("y", y);
-	}
-    }
-    */
 
     public static void main ( String[] args ) {
 	ToJSONSeries converter = new ToJSONSeries();
