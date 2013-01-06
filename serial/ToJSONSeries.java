@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.PrintStream;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.TimeZone;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -82,6 +83,7 @@ public class ToJSONSeries {
 		    long timeStampSeconds = 0;
 		    try {
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			df.setTimeZone(TimeZone.getTimeZone("GMT"));
 			
 			timeStampSeconds = df.parse(splitted[timeStampIndex]).getTime()/1000;
 		    } catch(ParseException e) {
