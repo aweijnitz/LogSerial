@@ -46,7 +46,7 @@ public class ToJSONSeries {
     }
     
     public void convert(String fileName, PrintStream out) {
-	byte history = 20;
+	byte history = 4;
 	DataSeries humidity = new DataSeries("Humidity", "#4682b4");
 	DataSeries temps = new DataSeries("Temperature", "#9cc1e0");
 	
@@ -65,11 +65,14 @@ public class ToJSONSeries {
 	    // Loop through all the lines and do sub-sampling by summing up 
 	    // at every 20 lines (history) and output the resulting average value
 	    while ((nextLine = in.readLine()) != null)   {
-		// Remove debug statements and filter out empty lines
-		if(nextLine.startsWith("DEBUG") || nextLine.trim().isEmpty())
+		// Filter out empty lines
+		if(nextLine.trim().isEmpty())
 		    continue;
 		
 		String[] splitted = nextLine.split(",");
+		if(splitted[1].startsWith("DEBUG")) // Skip debug statements
+		    continue;
+
 		rH[lineNr % history] = Float.parseFloat(splitted[rHIndex]);
 		t[lineNr % history] = Float.parseFloat(splitted[tIndex]);
 
